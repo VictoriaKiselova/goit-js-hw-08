@@ -87,7 +87,7 @@ gallery.innerHTML = showImages(images);
 
 gallery.addEventListener("click", function (event) {
   event.preventDefault();
-  if (event.target.closest(".gallery-item")) {
+  if (event.target.closest(".gallery-image")) {
     const imageClosest = event.target.closest(".gallery-image");
     const dataAtributeImg = imageClosest.dataset.source;
     showDataAtributeImage(dataAtributeImg);
@@ -98,11 +98,9 @@ gallery.addEventListener("click", function (event) {
 });
 
 function showDataAtributeImage(item) {
-  basicLightbox
-    .create(
-      `<div class="modal">
-            <img src="${item}">
-        </div>`
-    )
-    .show();
+  const modal = `<div class="modal">
+                <img src="${item}">
+                </div>`;
+  const modalShow = basicLightbox.create(modal);
+  modalShow.show();
 }
